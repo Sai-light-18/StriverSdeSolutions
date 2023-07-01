@@ -1,0 +1,22 @@
+public class Solution {
+	public static ArrayList<ArrayList<Long>> printPascal(int numRows) {
+                 // Write your code here.
+		ArrayList<ArrayList<Long>> ans = new ArrayList<ArrayList<Long>>();
+        ArrayList<Long> res2  = null;
+        
+        for(int i = 0 ; i < numRows; i++){
+           ArrayList<Long>  res1 = new ArrayList<Long>();
+            for(int j = 0; j<= i ;j++){
+                if( j  == 0 || j == i){
+                    res1.add(1L);
+                }
+                else{
+                   res1.add(res2.get(j - 1) + res2.get(j));
+                }
+            }
+            res2 = res1;
+            ans.add(res1);
+            }
+        return ans;
+	}
+}

@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+
+public class Solution {
+    public static int longestSubSeg(ArrayList<Integer> arr, int n, int k) {
+        int maxLen = 0; // Maximum length of the subsequence
+        int left = 0; // Left pointer of the sliding window
+        int zerosCount = 0; // Count of zeros within the sliding window
+
+        for (int right = 0; right < n; right++) {
+            if (arr.get(right) == 0) {
+                zerosCount++;
+            }
+
+            while (zerosCount > k) {
+                if (arr.get(left) == 0) {
+                    zerosCount--;
+                }
+                left++;
+            }
+
+            int subSeqLen = right - left + 1;
+            maxLen = Math.max(maxLen, subSeqLen);
+        }
+
+        return maxLen;
+    }
+}

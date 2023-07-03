@@ -1,0 +1,24 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    public static int modularExponentiation(int X, int N, int M) {
+        if (N == 0) {
+            return 1; // Anything raised to the power 0 is 1
+        }
+
+        long result = 1;
+        long base = X % M; // Reduce the base to avoid overflow
+
+        while (N > 0) {
+            if (N % 2 == 1) {
+                result = (result * base) % M;
+            }
+
+            base = (base * base) % M;
+            N /= 2;
+        }
+
+        return (int) result;
+    }
+}

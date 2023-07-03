@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class Solution {
+    public static long getTrappedWater(long[] height, int n) {
+        long water = 0; // Variable to store the total trapped water
+        int left = 0; // Left pointer
+        int right = n - 1; // Right pointer
+        long maxLeft = 0; // Maximum height from the left
+        long maxRight = 0; // Maximum height from the right
+
+        while (left < right) {
+            if (height[left] <= height[right]) {
+                // Process the left side
+                if (height[left] > maxLeft) {
+                    // Update the maximum height from the left
+                    maxLeft = height[left];
+                } else {
+                    // Calculate the trapped water based on the maximum height from the left
+                    water += maxLeft - height[left];
+                }
+                left++;
+            } else {
+                // Process the right side
+                if (height[right] > maxRight) {
+                    // Update the maximum height from the right
+                    maxRight = height[right];
+                } else {
+                    // Calculate the trapped water based on the maximum height from the right
+                    water += maxRight - height[right];
+                }
+                right--;
+            }
+        }
+
+        return water;
+    }
+}

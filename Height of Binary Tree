@@ -1,0 +1,33 @@
+import java.util.* ;
+import java.io.*; 
+/*
+
+*********************************************************
+Following is the structure for data type 'TreeNode' :
+*********************************************************
+
+class TreeNode {
+    int data;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+ */
+
+public class Solution {
+
+    static int maxDepth(TreeNode root) {
+        if (root == null)
+            return -1; // Height of an empty tree is -1
+
+        int leftHeight = maxDepth(root.left);
+        int rightHeight = maxDepth(root.right);
+
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+}
